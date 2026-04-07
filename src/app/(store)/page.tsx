@@ -56,7 +56,7 @@ export default function HomePage() {
   );
   return (
     <>
-      <MDBRow className="g-0 mb-4">
+      <MDBRow className="g-0 mb-0 mb-md-4">
         <MDBCol>
           <Banner />
         </MDBCol>

@@ -9,3 +9,11 @@
     max-height: 350px;
     object-fit: cover;
 }
+
+@media (max-width: 768px) {
+  .banner-img {
+    max-height: none;        /* remove limite */
+    height: auto;            /* altura natural */
+    object-fit: contain;     /* mostra imagem inteira */
+  }
+}

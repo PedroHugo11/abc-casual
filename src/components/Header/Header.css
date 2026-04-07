@@ -297,11 +297,9 @@
 
   .header-top {
     padding: 12px 16px;
-
     display: flex;
     align-items: center;
     gap: 12px;
-
     justify-content: space-around;
   }
 
@@ -323,6 +321,8 @@
     justify-content: space-around;
     align-items: center;
     padding: 10px 16px;
+    gap: 0px;
+    flex-direction: column;
   }
 
   .menu-toggle-btn {
@@ -331,10 +331,24 @@
 
   .categories-links {
     display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
   }
 
-  .nav-icons {
-    gap: 12px;
+  .categories-links.open {
+    display: flex;
+    width: 100%;
   }
+
+  .categories-links.open .cat-link {
+      border-bottom: 1px solid #ccc;
+  }
+
+  .menu-toggle-btn {
+    display: block;
+  }
+
+
 
 }

@@ -327,7 +327,7 @@ export default function Header() {
           <i className="fa-solid fa-bars"></i>
         </button>
 
-        <div className="categories-links">
+        <div className={`categories-links ${open ? "open" : ""}`}>
           <Link href="/products?category=t-shirt" className="cat-link">
             T-Shirt
           </Link>
