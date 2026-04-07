@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import type { Product } from "./productsTypes";
 import type { RootState } from "@/store/store";
 
@@ -25,7 +25,7 @@ export const fetchProducts = createAsyncThunk(
         throw new Error("Erro na API");
       }
 
-      return await response.json();
+      return (await response.json()) as Product[];
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -81,7 +81,7 @@ const productsSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchProducts.fulfilled, (state, action) => {
+      .addCase(fetchProducts.fulfilled, (state, action: PayloadAction<Product[]>) => {
         state.loading = false;
         state.items = action.payload;
       })
@@ -91,12 +91,12 @@ const productsSlice = createSlice({
       })
 
       // CREATE
-      .addCase(createProduct.fulfilled, (state, action) => {
+      .addCase(createProduct.fulfilled, (state, action: PayloadAction<Product>) => {
         state.items.push(action.payload);
       })
 
       // UPDATE
-      .addCase(updateProduct.fulfilled, (state, action) => {
+      .addCase(updateProduct.fulfilled, (state, action: PayloadAction<Product>) => {
         const index = state.items.findIndex((p) => p.id === action.payload.id);
 
         if (index !== -1) {
@@ -105,13 +105,13 @@ const productsSlice = createSlice({
       })
 
       // DELETE
-      .addCase(deleteProduct.fulfilled, (state, action) => {
+      .addCase(deleteProduct.fulfilled, (state, action: PayloadAction<string>) => {
         state.items = state.items.filter((p) => p.id !== action.payload);
       });
   },
 });
 
-export const selectProducts = (state: RootState) => state.products.items;
+export const selectProducts = (state: RootState) : Product[] => state.products.items;
 export const selectProductsLoading = (state: RootState) =>
   state.products.loading;
 export const selectProductsError = (state: RootState) => state.products.error;
