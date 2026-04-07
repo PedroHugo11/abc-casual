@@ -30,13 +30,13 @@ interface Props {
 export default function StepAddress({ next }: Props) {
   const dispatch = useAppDispatch();
 
-  const addresses = useAppSelector((state) => state.checkout.addresses);
+  const addresses = useAppSelector((state) : Address[] => state.checkout.addresses);
   const selectedAddress = useAppSelector(
     (state) => state.checkout.selectedAddress,
   );
 
   const shippingOptions = useAppSelector(
-    (state) => state.checkout.shippingOptions,
+    (state) : Shipping[] => state.checkout.shippingOptions,
   );
   const selectedShipping = useAppSelector(
     (state) => state.checkout.selectedShipping,
