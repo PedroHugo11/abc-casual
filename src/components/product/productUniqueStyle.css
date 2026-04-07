@@ -1,0 +1,168 @@
+/* =================================
+   PRODUCT PAGE
+================================= */
+
+.product-description {
+  border-top: 1px solid #bfbfbf;
+  
+  padding: 24px;
+}
+
+.product-description h3 {
+  font-weight: 700;
+}
+
+.product-description ul {
+  padding-left: 18px;
+}
+
+.product-description li {
+  margin-bottom: 6px;
+}
+
+/* =================================
+   PRODUCT INFO
+================================= */
+
+.product-info{
+  top:20px;
+}
+
+/* BADGE */
+
+.product-badge{
+  display:inline-block;
+  background:#000;
+  color:#fff;
+  padding:6px 12px;
+  font-size:.75rem;
+  border-radius: var(--radius-sm);
+  margin-bottom:12px;
+}
+
+/* TITLE */
+
+.product-title{
+  font-size:1.8rem;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+/* PRICE */
+
+.price-box{
+  margin-bottom:16px;
+}
+
+.price-line{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.price{
+  font-size:2.2rem;
+  font-weight:900;
+  color: #000;
+}
+
+.installments{
+  font-size:.9rem;
+  color: var(--color-text-muted);
+}
+
+/* STOCK */
+
+.stock-badge{
+  font-size:.75rem;
+  background:rgba(0,200,100,.15);
+  color:#00c864;
+  padding:4px 8px;
+  border-radius:20px;
+}
+
+/* SHIPPING */
+
+.shipping-box{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  background:rgba(214,177,0,0.08);
+  border-radius: var(--radius-sm);
+  margin-bottom:18px;
+  font-size:.9rem;
+}
+
+/* OPTIONS */
+
+.option-group{
+  margin-bottom:20px;
+}
+
+.option-title{
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+/* SIZE */
+
+.size-grid{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.size-btn{
+  border:1px solid var(--color-border);
+  background:none;
+  padding:8px 14px;
+  border-radius: var(--radius-sm);
+  cursor:pointer;
+  transition: var(--transition-fast);
+}
+
+.size-btn:hover{
+  border-color: var(--color-primary);
+}
+
+.size-btn.active{
+  background: var(--color-primary);
+  color:#000;
+  border-color: var(--color-primary);
+}
+
+/* COLORS */
+
+.color-grid{
+  display:flex;
+  gap:8px;
+}
+
+.color-circle{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:#ccc;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+
+.color-circle.active{
+  border-color: var(--color-primary);
+}
+
+/* BENEFITS */
+
+.product-benefits{
+  margin-top:18px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-size:.9rem;
+  color: var(--color-text-muted);
+}
+
+.product-benefits i{
+  margin-right:6px;
+}

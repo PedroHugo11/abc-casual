@@ -1,0 +1,158 @@
+.product-card {
+  background-color: #0d0d0d;
+  color: #fff;
+  border: 1px solid #222;
+  border-radius: 0;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+body.light-mode .product-card{
+  color: #333 !important;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 4px 18px rgba(255, 215, 0, 0.12);
+}
+
+/* Imagem */
+.product-img-wrapper {
+  width: 100%;
+  background-color: #111;
+  border-bottom: 1px solid #222;
+  position: relative;
+}
+
+.product-img {
+  width: 100%;
+  object-fit: cover;
+  height: 320px;
+}
+
+/* Hover overlay */
+.hover-info {
+  position: absolute;
+  bottom: 0;
+  left:0;
+  width: 100%;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body.light-mode .hover-info{
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Tamanhos */
+.sizes {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.size-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: 2px;
+  gap: 4px;
+}
+
+.size-box:hover {
+  background: #ffc90c;
+  color: #0d0d0d;
+  border-color: #ffc90c;
+}
+
+body.light-mode .size-box {
+  border: 1px solid #0d0d0d;
+}
+
+.size-box input {
+  display: none;
+}
+
+.size-box span {
+  pointer-events: none;
+}
+
+.size-box input:checked + span {
+  font-weight: 700;
+}
+
+.size-box:has(input:checked) {
+  background: #ffc90c;
+  color: #0d0d0d;
+  border-color: #ffc90c;
+}
+
+body.light-mode .size-box:has(input:checked) {
+  background: #fff;
+  color: #0d0d0d;
+  border-color: #ffc90c;
+}
+
+/* aviso */
+.select-warning {
+  margin-top: 6px;
+  background: #ffc90c;
+  color: #000;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+/* Cores */
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.color-circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  border-color:#d6b100;
+}
+
+/* Texto */
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.product-type {
+  font-size: 0.85rem;
+  color: #b8b8b8;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+body.light-mode .product-type{
+  color: #0d0d0d;
+}
+
+.product-price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #d6b100;
+  margin-bottom: 12px;
+}
+

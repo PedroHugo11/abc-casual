@@ -1,0 +1,248 @@
+@import "../../styles/design-tokens.css";
+
+/* =================================
+   GLOBAL THEME – ABC F.C.
+   Inspired by CanchaFC
+================================= */
+
+
+body {
+  background: var(--color-bg-dark);
+  font-family: "Inter", sans-serif;
+  color: var(--color-text-light);
+}
+
+/* =================================
+   FORMS
+================================= */
+
+.form-outline {
+  height: 100%;
+}
+
+/* =================================
+   COLORS UTILITIES
+================================= */
+
+.bg-dark {
+  background-color: #332d2d !important;
+}
+
+.bg-light {
+  background-color: #f5f5f5 !important;
+}
+
+.bg-success {
+    --mdb--bg-opacity: 1;
+    background-color: rgba(20, 164, 77, var(--mdb--bg-opacity)) !important;
+}
+
+.text-white {
+  color: var(--color-text-light) !important;
+}
+
+.text-dark {
+  color: var(--color-text-dark) !important;
+}
+
+/* =================================
+   NAVBAR
+================================= */
+
+.navbar {
+  background: #000 !important;
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  color: #000 !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  color: #cccccc !important;
+  margin-left: 12px;
+}
+
+.nav-link:hover {
+  color: var(--color-text-light) !important;
+}
+
+/* =================================
+   BUTTONS
+================================= */
+
+.btn {
+  border-radius: var(--radius-sm) !important;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: var(--transition-fast);
+}
+
+/* botão principal */
+
+.btn-warning {
+  background: var(--color-primary) !important;
+  color: var(--color-text-dark) !important;
+  box-shadow: none;
+}
+
+.btn-warning:hover {
+  filter: brightness(1.15);
+}
+
+/* =================================
+   CARDS
+================================= */
+
+.card {
+  background: var(--color-bg-card) !important;
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-text-light) !important;
+  transition: var(--transition-normal);
+}
+
+/* hover apenas para cards interativos */
+
+.card-hover:hover {
+  border-color: var(--color-primary) !important;
+}
+
+/* imagens dentro de card */
+
+.card img {
+  border-bottom: 1px solid #222 !important;
+  object-fit: cover;
+}
+
+/* =================================
+   PRODUCT
+================================= */
+
+.product-price {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.product-title {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-section {
+  background: #0d0d0d;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+}
+
+/* =================================
+   TABLES
+================================= */
+
+table {
+  background: transparent !important;
+}
+
+table tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+table td,
+table th {
+  color: var(--color-text-light) !important;
+}
+
+/* =================================
+   MDB FIXES
+================================= */
+
+.form-outline .form-control#inputSearchHome~.form-label {
+  color: var(--color-text-light) !important;
+}
+
+.form-outline .form-control:disabled,
+.form-outline .form-control.disabled,
+.form-outline .form-control[readonly] {
+  background-color: #e9ecef !important;
+}
+
+/* =================================
+   SIDEBAR
+================================= */
+
+body.light-mode .sidebar > .card{
+  background-color: #f6f6f7 !important;
+}
+
+.sidebar .form-range {
+  border: 0 !important;
+}
+
+/* =================================
+   LIGHT MODE
+================================= */
+
+body.light-mode {
+  background: var(--color-bg-card-white) !important;
+  color: var(--color-text-dark) !important;
+}
+
+/* cards */
+
+body.light-mode .card {
+  background: var(--color-bg-card-white) !important;
+  border: 1px solid #e0e0e0 !important;
+  color: var(--color-text-dark) !important;
+  box-shadow: rgba(33, 35, 38, 0.2) 0px 10px 10px -10px;
+}
+
+/* tables */
+
+body.light-mode table td,
+body.light-mode table th {
+  color: var(--color-text-dark) !important;
+  border-bottom: 1px solid #eee !important;
+}
+
+/* textos */
+
+body.light-mode .text-muted {
+  color: #6c757d !important;
+}
+
+body.light-mode .form-label {
+  color: var(--color-text-dark) !important;
+}
+
+body.light-mode .card {
+  background: var(--color-bg-card-white) !important;
+  border: 1px solid #e0e0e0 !important;
+  color: var(--color-text-dark) !important;
+  box-shadow: rgba(33, 35, 38, 0.2) 0px 10px 10px -10px;
+}
+
+/* inputs */
+
+body.light-mode .header-left .search {
+  background-color: var(--color-bg-card-white) !important;
+  color: var(--color-text-dark) !important;
+  border: 1px solid #ddd !important;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 768px) {
+
+  .navbar-brand {
+    font-size: 0.95rem;
+  }
+
+}

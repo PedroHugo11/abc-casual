@@ -1,0 +1,53 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.admin-layout {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.bg-success {
+    --mdb--bg-opacity: 1;
+    background-color: rgba(20, 164, 77, var(--mdb--bg-opacity)) !important;
+}
+
+.bg-dark {
+    --mdb--bg-opacity: 1;
+    background-color: rgba(51, 45, 45, var(--mdb--bg-opacity)) !important;
+}
+
+.badge {
+  height: min-content;
+}
+
+/* SIDEBAR */
+.admin-sidebar {
+  width: 240px;
+  background: #111;
+  color: white;
+  min-height: 100vh;
+}
+
+/* LINKS */
+.admin-sidebar .list-group-item {
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.admin-sidebar .list-group-item.active {
+  background: #ffc90c;
+  color: #000;
+  font-weight: bold;
+}
+
+/* CONTENT */
+.admin-content {
+  background: #f5f5f5;
+}
+
+/* HEADER */
+.admin-header {
+  background: white;
+}

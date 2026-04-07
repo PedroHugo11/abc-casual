@@ -1,0 +1,148 @@
+.cart-page {
+  max-width: 1200px;
+}
+
+/* ITEM */
+.cart-item {
+  display: grid;
+  grid-template-columns: 140px 1fr 150px;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.cart-item-img {
+  width: 120px;
+  height: auto;
+}
+
+.product-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.product-ref {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.qty-container {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty button {
+  border: 1px solid #ccc;
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cart-item-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cart-item-right .price-box {
+  text-align: right;
+}
+
+.cart-item-right .price {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.cart-item-right .remove {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* RESUMO */
+.cart-summary {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  position: sticky;
+  top: 20px;
+}
+
+.cart-summary h4 {
+  margin-bottom: 16px;
+}
+
+.summary-row,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px 20px;
+}
+
+.summary-total {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.free {
+  color: green;
+  font-weight: 600;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .cart-item {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-item-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .cart-summary {
+    position: static;
+    margin-top: 24px;
+  }
+}
+
+.link-button {
+  border: none;
+  background: none;
+  color: #6a1b9a;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cep-input {
+  display: flex;
+  gap: 8px;
+}
+
+.cep-input input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+  height: 30px;
+  width: 150px;
+}
+
+.cep-input button {
+  height: 30px;
+  padding: 8px 10px;
+}
