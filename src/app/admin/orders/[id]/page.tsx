@@ -21,7 +21,7 @@ import {
   updateOrderStatus,
   updateTracking,
 } from "@/features/orders/ordersSlice";
-import type { OrderStatus } from "@/features/orders/types";
+import type { Order, OrderStatus } from "@/features/orders/types";
 import "./ordersStyle.css";
 
 // LABEL
@@ -48,8 +48,8 @@ export default function AdminOrderDetailsPage() {
 
   const orderId = Array.isArray(params.id) ? params.id[0] : params.id;
 
-  const orders = useAppSelector((state) => state.orders.orders);
-  const order = orders.find((o) => o.id === orderId);
+  const orders = useAppSelector((state): Order[] => state.orders.orders);
+  const order = orders.find((o: Order) => o.id === orderId);
 
   const [tracking, setTracking] = useState(order?.tracking || "");
 

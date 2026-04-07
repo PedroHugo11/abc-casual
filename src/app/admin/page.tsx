@@ -22,11 +22,12 @@ import {
   Line,
   CartesianGrid,
 } from "recharts";
+import { Order } from "@/features/orders/types";
 
 type Period = "7d" | "30d" | "all";
 
 export default function AdminDashboard() {
-  const orders = useAppSelector((state) => state.orders.orders);
+  const orders = useAppSelector((state): Order[] => state.orders.orders);
 
   const [period, setPeriod] = useState<Period>("7d");
 
@@ -37,7 +38,7 @@ export default function AdminDashboard() {
     const now = new Date();
     const days = period === "7d" ? 7 : 30;
 
-    return orders.filter((order) => {
+    return orders.filter((order : Order) => {
       const date = new Date(order.date.split("/").reverse().join("-"));
       const diff =
         (now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24);

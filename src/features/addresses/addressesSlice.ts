@@ -48,7 +48,7 @@ export const {
   setDefaultAddress
 } = addressesSlice.actions;
 
-export const selectAddresses = (state: RootState) =>
+export const selectAddresses = (state: RootState): Address[] =>
   state.addresses.items;
 
 export default addressesSlice.reducer;

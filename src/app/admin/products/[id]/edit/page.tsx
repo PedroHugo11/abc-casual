@@ -19,14 +19,15 @@ import {
   MDBCardBody,
   MDBBtn,
 } from "mdb-react-ui-kit";
+import { Product } from "@/features/products/productsTypes";
 
 export default function EditProductPage() {
   const { id } = useParams();
   const router = useRouter();
   const dispatch = useAppDispatch();
 
-  const { items, loading } = useAppSelector((state) => state.products);
-  const product = items.find((p) => p.id === id);
+  const { items, loading } = useAppSelector((state) : { items: Product[], loading: boolean } => state.products);
+  const product = items.find((p: Product) => p.id === id);
 
   const [saving, setSaving] = useState(false);
 

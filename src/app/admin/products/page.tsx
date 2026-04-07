@@ -16,11 +16,12 @@ import {
   MDBBtn,
   MDBBadge,
 } from "mdb-react-ui-kit";
+import { Product } from "@/features/products/productsTypes";
 
 export default function AdminProductsPage() {
   const dispatch = useAppDispatch();
   const { items: products, loading } = useAppSelector(
-    (state) => state.products
+    (state) : { items: Product[], loading: boolean } => state.products
   );
 
   useEffect(() => {

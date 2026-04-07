@@ -14,13 +14,14 @@ import { useAppSelector } from "@/store/hooks";
 import { CheckCircle, CreditCard, Package, Truck, Home } from "lucide-react";
 import Sidebar from "../../AccountSidebar";
 import "../../ordersStyle.css";
+import { Order } from "@/features/orders/types";
 
 export default function OrderDetailsPage() {
   const params = useParams();
   const orderId = Array.isArray(params.id) ? params.id[0] : params.id;
 
-  const orders = useAppSelector((state) => state.orders.orders);
-  const order = orders.find((o) => o.id === orderId);
+  const orders = useAppSelector((state): Order[] => state.orders.orders);
+  const order = orders.find((o: Order) => o.id === orderId);
 
   // map de status
   const statusMap: Record<string, number> = {

@@ -13,6 +13,7 @@ import "../ordersStyle.css";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/store/hooks";
 import { useState } from "react";
+import { Order } from "@/features/orders/types";
 
 export default function OrdersPage() {
   const [showAllOrders, setShowAllOrders] = useState(false);
@@ -56,7 +57,7 @@ export default function OrdersPage() {
               <p className="text-muted">Você ainda não possui pedidos.</p>
             )}
 
-            {ordersToShow.map((order) => (
+            {ordersToShow.map((order : Order) => (
               <article key={order.id} className="mb-4">
                 <MDBCard className="order-card">
                   <MDBCardBody>

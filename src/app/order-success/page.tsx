@@ -8,6 +8,8 @@ import {
   MDBCardBody,
   MDBBtn
 } from "mdb-react-ui-kit";
+import { Address, Shipping } from "@/features/checkout/types";
+import { CartItem } from "@/features/cart/cartTypes";
 
 export default function OrderSuccessPage() {
 
@@ -18,14 +20,14 @@ export default function OrderSuccessPage() {
   const shippingId = useAppSelector((state) => state.checkout.selectedShipping);
   const payment = useAppSelector((state) => state.checkout.paymentMethod);
 
-  const addresses = useAppSelector((state) => state.checkout.addresses);
-  const shippingOptions = useAppSelector((state) => state.checkout.shippingOptions);
+  const addresses = useAppSelector((state) : Address[] => state.checkout.addresses);
+  const shippingOptions = useAppSelector((state) : Shipping[] => state.checkout.shippingOptions);
 
   const address = addresses.find(a => a.id === addressId);
   const shipping = shippingOptions.find(s => s.id === shippingId);
 
   const total = cartItems.reduce(
-    (acc, item) => acc + item.product.price * item.quantity,
+    (acc: number, item: CartItem) => acc + item.product.price * item.quantity,
     0
   );
 
@@ -148,7 +150,7 @@ export default function OrderSuccessPage() {
 
             <ul className="list-unstyled">
 
-              {cartItems.map((item) => (
+              {cartItems.map((item: CartItem) => (
 
                 <li
                   key={item.product.id}

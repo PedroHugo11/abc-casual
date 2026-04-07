@@ -14,7 +14,7 @@ import {
 } from "mdb-react-ui-kit";
 
 import { updateOrderStatus } from "@/features/orders/ordersSlice";
-import type { OrderStatus } from "@/features/orders/types";
+import type { Order, OrderStatus } from "@/features/orders/types";
 
 // labels
 const statusLabel: Record<string, string> = {
@@ -29,7 +29,7 @@ export default function AdminOrdersPage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
-  const orders = useAppSelector((state) => state.orders.orders);
+  const orders = useAppSelector((state): Order[] => state.orders.orders);
   console.log("ADMIN ORDERS:", orders);
 
   const [showAll, setShowAll] = useState(false);

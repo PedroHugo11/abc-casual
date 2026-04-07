@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import { MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
 import { Order } from "@/features/orders/types";
 import { clearCart } from "@/features/cart/cartSlice";
+import { Address, Shipping } from "../types";
+import { CartItem } from "@/features/cart/cartTypes";
 
 interface Props {
   goToAddress: () => void;
@@ -19,13 +21,13 @@ export default function StepReview({ goToAddress, goToPayment }: Props) {
 
   const cartItems = useAppSelector((state) => state.cart.items);
 
-  const addresses = useAppSelector((state) => state.checkout.addresses);
+  const addresses = useAppSelector((state) : Address[] => state.checkout.addresses);
   const selectedAddressId = useAppSelector(
     (state) => state.checkout.selectedAddress,
   );
 
   const shippingOptions = useAppSelector(
-    (state) => state.checkout.shippingOptions,
+    (state) : Shipping[] => state.checkout.shippingOptions,
   );
   const selectedShippingId = useAppSelector(
     (state) => state.checkout.selectedShipping,
@@ -37,7 +39,7 @@ export default function StepReview({ goToAddress, goToPayment }: Props) {
   const shipping = shippingOptions.find((s) => s.id === selectedShippingId);
 
   const total = cartItems.reduce(
-    (acc, item) => acc + item.product.price * item.quantity,
+    (acc: number, item: CartItem) => acc + item.product.price * item.quantity,
     0,
   );
 
@@ -53,7 +55,7 @@ export default function StepReview({ goToAddress, goToPayment }: Props) {
       status: "delivered",
       total,
 
-      items: cartItems.map((item) => ({
+      items: cartItems.map((item: CartItem) => ({
         productId: item.product.id,
         name: item.product.name,
         price: item.product.price,
@@ -238,7 +240,7 @@ export default function StepReview({ goToAddress, goToPayment }: Props) {
             </header>
 
             <ul className="list-unstyled">
-              {cartItems.map((item) => (
+              {cartItems.map((item: CartItem) => (
                 <li
                   key={item.product.id}
                   className="d-flex justify-content-between mb-2"
