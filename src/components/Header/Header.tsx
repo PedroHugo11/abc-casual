@@ -323,9 +323,93 @@ export default function Header() {
       </div>
 
       <nav className="header-categories">
-        <button className="menu-toggle-btn" onClick={() => setOpen(!open)}>
-          <i className="fa-solid fa-bars"></i>
-        </button>
+        <div className="d-flex d-md-none flex-row justify-content-around align-items-center w-100">
+          <button
+            className={`menu-toggle-btn ${open ? "active" : ""}`}
+            onClick={() => setOpen(!open)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          {/* CART */}
+          <div className="mini-cart-wrapper d-flex d-md-none">
+            <div
+              className="cart-link"
+              onClick={(e) => {
+                e.stopPropagation();
+                setMiniCartOpen(true);
+              }}
+            >
+              <i className="icon fa-solid fa-cart-shopping" />
+
+              {cartItems.length > 0 && (
+                <MDBBadge color="warning" pill notification>
+                  {cartItems.length}
+                </MDBBadge>
+              )}
+            </div>
+
+            {miniCartOpen && cartItems.length > 0 && (
+              <>
+                {/* OVERLAY */}
+                <div
+                  className="cart-overlay"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMiniCartOpen(false);
+                  }}
+                />
+
+                {/* DRAWER */}
+                <div className="cart-drawer">
+                  <div className="cart-drawer-header">
+                    <span>Meu Carrinho</span>
+                    <button
+                      className="btn btn-light"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setMiniCartOpen(false);
+                      }}
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <div className="cart-drawer-success">
+                    ✔ O produto foi adicionado ao seu carrinho.
+                  </div>
+
+                  <div className="cart-drawer-items">
+                    {cartItems.map((ci, index) => (
+                      <div key={index} className="cart-drawer-item">
+                        <img src={ci.product.image} />
+                        <div>
+                          <strong>{ci.product.name}</strong>
+                          <div>
+                            R$ {(ci.product.price * ci.quantity).toFixed(2)}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="cart-drawer-footer">
+                    <div className="subtotal">
+                      <span>Subtotal</span>
+                      <strong>R$ {total.toFixed(2)}</strong>
+                    </div>
+
+                    <Link href="/cart" className="checkout-btn">
+                      Finalizar Compra
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
 
         <div className={`categories-links ${open ? "open" : ""}`}>
           <Link href="/products?category=t-shirt" className="cat-link">

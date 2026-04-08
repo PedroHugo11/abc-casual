@@ -40,7 +40,7 @@ export default function Footer() {
 
       <section className="footer-content">
         <MDBContainer>
-          <MDBRow className="d-flex justify-content-around align-items-start">
+          <MDBRow className="d-flex justify-content-start justify-content-md-around align-items-start">
             {/* INSTITUCIONAL */}
 
             <div className="w-max-content d-flex">

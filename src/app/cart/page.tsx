@@ -119,7 +119,7 @@ export default function CartPage() {
           <h3 className="mb-4">Meu carrinho</h3>
 
           {items.map((ci, index) => (
-            <article className="cart-item mb-3" key={ci.product.id}>
+            <article className="cart-item mb-3" key={`${ci.product.id}-${ci.selectedSize}-${ci.selectedColor}`}>
               <div className="cart-item-left">
                 <img
                   src={ci.product.image}
