@@ -339,6 +339,12 @@ export default function Header() {
               className="cart-link"
               onClick={(e) => {
                 e.stopPropagation();
+
+                if (cartItems.length === 0) {
+                  router.push("/cart");
+                  return;
+                }
+
                 setMiniCartOpen(true);
               }}
             >
