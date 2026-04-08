@@ -2,12 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBBtn,
-} from "mdb-react-ui-kit";
+import Link from "next/link";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { selectProducts } from "@/features/products/productsSlice";
@@ -43,9 +39,7 @@ export default function ProductPage() {
     return (
       <MDBContainer className="py-5 text-center">
         <h3>Produto não encontrado</h3>
-        <MDBBtn onClick={() => router.push("/")}>
-          Voltar para a loja
-        </MDBBtn>
+        <MDBBtn onClick={() => router.push("/")}>Voltar para a loja</MDBBtn>
       </MDBContainer>
     );
   }
@@ -58,19 +52,23 @@ export default function ProductPage() {
 
   return (
     <MDBContainer className="py-5">
-
+      
       {/* BREADCRUMB */}
-      <p className="text-muted small mb-3">
-        Home / Produtos / {product.name}
+      <p className="breadcrumb-text text-muted small mb-3">
+        <Link href="/">Home</Link>
+        <span> / </span>
+
+        <Link href="/products">Produtos</Link>
+        <span> / </span>
+
+        <span className="current">{product.name}</span>
       </p>
 
       {/* HERO */}
-      <MDBRow className="g-5 align-items-start">
-
+      <MDBRow className="justify-content-between align-items-start">
         <ProductGallery product={product} />
 
         <ProductOptions product={product} variants={variants} />
-
       </MDBRow>
 
       {/* DESCRIÇÃO */}
@@ -79,7 +77,8 @@ export default function ProductPage() {
 
         <p>
           Explore o máximo de conforto e estilo com o {product.name}.
-          Desenvolvida com material premium, ideal para o dia a dia ou ocasiões especiais.
+          Desenvolvida com material premium, ideal para o dia a dia ou ocasiões
+          especiais.
         </p>
 
         <ul>
@@ -89,22 +88,18 @@ export default function ProductPage() {
           <li>Estampa em alta definição</li>
         </ul>
 
-        <p>
-          {product.description}
-        </p>
+        <p>{product.description}</p>
       </section>
 
       {/* PRODUTOS RELACIONADOS */}
       <MDBRow className="mt-5">
         <MDBCol size="12" className="mb-4 text-center">
-          <h3 className="fw-bold text-uppercase">
-            Produtos Semelhantes
-          </h3>
+          <h3 className="fw-bold text-uppercase">Produtos Semelhantes</h3>
         </MDBCol>
 
         {relatedProducts.map((related) => {
           const variants = products.filter(
-            (p) => p.groupId === related.groupId
+            (p) => p.groupId === related.groupId,
           );
 
           return (
@@ -114,7 +109,6 @@ export default function ProductPage() {
           );
         })}
       </MDBRow>
-
     </MDBContainer>
   );
 }

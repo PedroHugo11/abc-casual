@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/ProductCard/ProductCard";
 import { groupProducts } from "@/utils/groupProducts";
 import { MDBBtn, MDBCard, MDBCardBody, MDBInput } from "mdb-react-ui-kit";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ProductsPage() {
   const [sizeOpen, setSizeOpen] = useState(true);
@@ -120,6 +121,13 @@ export default function ProductsPage() {
       <section className="row">
         {/* SIDEBAR FILTROS */}
 
+        {/* BREADCRUMB */}
+        <p className="breadcrumb-text text-muted small mb-3">
+          <Link href="/">Home</Link>
+          <span> / </span>
+          <span className="current">Produtos</span>
+        </p>
+
         <aside className="sidebar col-md-3 mb-4">
           <MDBCard className="p-3">
             {/* TAMANHO */}
@@ -138,7 +146,10 @@ export default function ProductsPage() {
                 {sizeOpen && (
                   <div>
                     {sizes.map((s) => (
-                      <div key={s} className="form-check d-flex align-items-end mb-2">
+                      <div
+                        key={s}
+                        className="form-check d-flex align-items-end mb-2"
+                      >
                         <input
                           className="form-check-input"
                           type="checkbox"
@@ -220,7 +231,10 @@ export default function ProductsPage() {
                 {colorOpen && (
                   <div style={{ maxHeight: 160, overflowY: "auto" }}>
                     {colors.map((color) => (
-                      <div key={color} className="form-check d-flex align-items-end mb-2">
+                      <div
+                        key={color}
+                        className="form-check d-flex align-items-end mb-2"
+                      >
                         <input
                           className="form-check-input"
                           type="checkbox"

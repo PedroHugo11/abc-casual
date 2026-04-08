@@ -14,11 +14,7 @@ export default function ProductGallery({ product }: Props) {
       <img
         src={product.image}
         alt={product.name}
-        style={{
-          width: "100%",
-          objectFit: "cover",
-          borderRadius: 4,
-        }}
+        className="image-product-gallery"
       />
     </MDBCol>
   );

@@ -227,6 +227,27 @@ body.light-mode .card {
   box-shadow: rgba(33, 35, 38, 0.2) 0px 10px 10px -10px;
 }
 
+.breadcrumb-text {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* NÃO quebra linha */
+  gap: 4px;
+  font-size: 14px;
+}
+
+.breadcrumb-text a {
+  text-decoration: none;
+}
+
+.breadcrumb-text a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-text .current {
+  font-weight: 500;
+  color: #000;
+}
+
 /* inputs */
 
 body.light-mode .header-left .search {

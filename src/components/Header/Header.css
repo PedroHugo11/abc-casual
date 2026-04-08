@@ -478,6 +478,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  color: var(--color-text-dark) !important;
 }
 
 .checkout-btn {
