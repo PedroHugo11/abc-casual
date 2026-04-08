@@ -4,7 +4,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { selectUser } from "@/features/auth/authSlice";
+import { openLoginModal, selectUser } from "@/features/auth/authSlice";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import {
   selectCartItems,
@@ -14,7 +14,7 @@ import {
 } from "@/features/cart/cartSlice";
 
 import "./CartPage.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function CartPage() {
   const dispatch = useAppDispatch();
@@ -43,6 +43,8 @@ export default function CartPage() {
   const [showCouponInput, setShowCouponInput] = useState(false);
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0);
+
+  const messageRef = useRef<HTMLDivElement | null>(null);
 
   const checkCep = async () => {
     try {
@@ -73,12 +75,8 @@ export default function CartPage() {
 
   const handleCheckout = () => {
     if (!user) {
+      console.log("disparando modal");
       setMessage("Você precisa estar logado para finalizar a compra 🛒");
-
-      setTimeout(() => {
-        router.push("/?redirect=checkout");
-      }, 2000);
-
       return;
     }
 
@@ -89,6 +87,23 @@ export default function CartPage() {
 
     router.push("/checkout");
   };
+
+  useEffect(() => {
+    if (!message) return;
+
+    // scroll
+    messageRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+
+    // abre modal depois do render
+    const timer = setTimeout(() => {
+      dispatch(openLoginModal());
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [message]);
 
   const finalTotal = total + (shipping ?? 0) - discount;
 
@@ -112,14 +127,20 @@ export default function CartPage() {
         {/* PRODUTOS */}
         <MDBCol md="8">
           {message && (
-            <div className="alert alert-warning text-center mt-3">
+            <div
+              ref={messageRef}
+              className="alert alert-warning text-center mt-3"
+            >
               {message}
             </div>
           )}
           <h3 className="mb-4">Meu carrinho</h3>
 
           {items.map((ci, index) => (
-            <article className="cart-item mb-3" key={`${ci.product.id}-${ci.selectedSize}-${ci.selectedColor}`}>
+            <article
+              className="cart-item mb-3"
+              key={`${ci.product.id}-${ci.selectedSize}-${ci.selectedColor}`}
+            >
               <div className="cart-item-left">
                 <img
                   src={ci.product.image}

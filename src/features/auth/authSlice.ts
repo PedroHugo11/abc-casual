@@ -7,6 +7,8 @@ interface AuthState {
   isAuthenticated: boolean;
   loading: boolean;
   error: string | null;
+  loginModalOpen: boolean;
+  redirectAfterLogin: string | null;
 }
 
 const initialState: AuthState = {
@@ -14,6 +16,8 @@ const initialState: AuthState = {
   isAuthenticated: false,
   loading: false,
   error: null,
+  loginModalOpen: false,
+  redirectAfterLogin: null,
 };
 
 // ✅ Async thunk (mantido exatamente como você fez)
@@ -52,6 +56,15 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isAuthenticated = true;
     },
+    openLoginModal(state) {
+      state.loginModalOpen = true;
+    },
+    closeLoginModal(state) {
+      state.loginModalOpen = false;
+    },
+    setRedirectAfterLogin(state, action: PayloadAction<string | null>) {
+      state.redirectAfterLogin = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -63,6 +76,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.user = action.payload;
         state.isAuthenticated = true;
+        state.loginModalOpen = false;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
@@ -71,10 +85,18 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, updateUser } = authSlice.actions;
+export const {
+  logout,
+  updateUser,
+  openLoginModal,
+  closeLoginModal,
+  setRedirectAfterLogin,
+} = authSlice.actions;
 
 export const selectUser = (state: RootState) => state.auth.user;
 export const selectAuthLoading = (state: RootState) => state.auth.loading;
 export const selectAuthError = (state: RootState) => state.auth.error;
+export const selectLoginModalOpen = (state: RootState) => state.auth.loginModalOpen;
+export const selectRedirectAfterLogin = (state: RootState) => state.auth.redirectAfterLogin;
 
 export default authSlice.reducer;

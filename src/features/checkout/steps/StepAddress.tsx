@@ -67,12 +67,12 @@ export default function StepAddress({ next }: Props) {
     const userAddresses: Address[] = [
       {
         id: "1",
-        street: "Rua José Farache",
-        number: "22A",
+        street: "Rua da pedra",
+        number: "1",
         city: "Natal",
         state: "RN",
-        zip: "59022380",
-        phone: "(84) 99822-3869",
+        zip: "59010-000",
+        phone: "(84) 99999-3869",
       },
     ];
 

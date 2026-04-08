@@ -419,7 +419,7 @@
   height: 100%;
 
   background: #fff;
-  z-index: 1000;
+  z-index: 2000;
 
   display: flex;
   flex-direction: column;
@@ -500,4 +500,8 @@
   to {
     transform: translateX(0);
   }
+}
+
+.mdb-modal {
+  z-index: 99999 !important;
 }

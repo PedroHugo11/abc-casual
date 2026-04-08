@@ -19,25 +19,23 @@ import {
   MDBBtn,
   MDBBadge,
 } from "mdb-react-ui-kit";
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
-import { logout } from "@/features/auth/authSlice";
+import {
+  logout,
+  openLoginModal,
+} from "@/features/auth/authSlice";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { selectCartItems } from "@/features/cart/cartSlice";
 import { selectProducts } from "@/features/products/productsSlice";
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [registerOpen, setRegisterOpen] = useState(false);
+  const [openMenu, setOpen] = useState(false);
   const [miniCartOpen, setMiniCartOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [showAutocomplete, setShowAutocomplete] = useState(false);
 
   const dispatch = useAppDispatch();
   const router = useRouter();
-
   const products = useAppSelector(selectProducts);
   const cartItems = useAppSelector(selectCartItems);
   const user = useAppSelector((state) => state.auth.user);
@@ -215,66 +213,20 @@ export default function Header() {
                 </>
               ) : (
                 <>
-                  <MDBDropdownItem link onClick={() => setLoginOpen(true)}>
+                  <MDBDropdownItem
+                    link
+                    onClick={() => dispatch(openLoginModal())}
+                  >
                     Entrar
                   </MDBDropdownItem>
 
-                  <MDBDropdownItem link onClick={() => setRegisterOpen(true)}>
+                  <MDBDropdownItem link onClick={() => dispatch(openLoginModal())}>
                     Criar conta
                   </MDBDropdownItem>
                 </>
               )}
             </MDBDropdownMenu>
           </MDBDropdown>
-
-          {/* LOGIN MODAL */}
-          <MDBModal open={loginOpen} setOpen={setLoginOpen}>
-            <MDBModalDialog centered>
-              <MDBModalContent>
-                <MDBModalHeader>
-                  <MDBModalTitle className="text-dark">Login</MDBModalTitle>
-                  <MDBBtn
-                    className="btn-close"
-                    color="none"
-                    onClick={() => setLoginOpen(false)}
-                  />
-                </MDBModalHeader>
-                <MDBModalBody>
-                  <LoginForm
-                    onClose={() => setLoginOpen(false)}
-                    onCreateAccount={() => {
-                      setLoginOpen(false);
-                      setRegisterOpen(true);
-                    }}
-                    onForgotPassword={() => {
-                      console.log("Esqueceu senha");
-                    }}
-                  />
-                </MDBModalBody>
-              </MDBModalContent>
-            </MDBModalDialog>
-          </MDBModal>
-
-          {/* REGISTER MODAL */}
-          <MDBModal open={registerOpen} setOpen={setRegisterOpen}>
-            <MDBModalDialog centered>
-              <MDBModalContent>
-                <MDBModalHeader>
-                  <MDBModalTitle className="text-dark">
-                    Criar conta
-                  </MDBModalTitle>
-                  <MDBBtn
-                    className="btn-close"
-                    color="none"
-                    onClick={() => setRegisterOpen(false)}
-                  />
-                </MDBModalHeader>
-                <MDBModalBody>
-                  <RegisterForm onClose={() => setRegisterOpen(false)} />
-                </MDBModalBody>
-              </MDBModalContent>
-            </MDBModalDialog>
-          </MDBModal>
 
           <i className="icon fa-regular fa-heart" />
 
@@ -325,8 +277,8 @@ export default function Header() {
       <nav className="header-categories">
         <div className="d-flex d-md-none flex-row justify-content-around align-items-center w-100">
           <button
-            className={`menu-toggle-btn ${open ? "active" : ""}`}
-            onClick={() => setOpen(!open)}
+            className={`menu-toggle-btn ${openMenu ? "active" : ""}`}
+            onClick={() => setOpen(!openMenu)}
           >
             <span></span>
             <span></span>
@@ -417,7 +369,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className={`categories-links ${open ? "open" : ""}`}>
+        <div className={`categories-links ${openMenu ? "open" : ""}`}>
           <Link href="/products?category=t-shirt" className="cat-link">
             T-Shirt
           </Link>

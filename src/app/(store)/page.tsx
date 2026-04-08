@@ -74,7 +74,7 @@ export default function HomePage() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </MDBCol>
-          <MDBCol md="4" className="d-flex gap-2">
+          <MDBCol md="4" className="d-flex mt-1 mt-md-0 gap-2">
             <select className="form-select">
               <option value="all">Todos os tipos</option>
               <option value="t-shirt">T-Shirt</option>

@@ -2,6 +2,7 @@ import { ReduxProvider } from '@/store/provider'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import ThemeController from '@/components/ThemeController/ThemeController'
+import GlobalModals from '@/components/GlobalModals/GlobalModals'
 
 export default function RootLayout({
   children,
@@ -14,6 +15,7 @@ export default function RootLayout({
         <ReduxProvider>
           <ThemeController />
           {children}
+          <GlobalModals />
         </ReduxProvider>
       </body>
     </html>

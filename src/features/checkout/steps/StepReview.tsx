@@ -52,7 +52,7 @@ export default function StepReview({ goToAddress, goToPayment }: Props) {
     const newOrder: Order = {
       id: Date.now().toString(),
       date: new Date().toLocaleDateString("pt-BR"),
-      status: "delivered",
+      status: "paid",
       total,
 
       items: cartItems.map((item: CartItem) => ({
@@ -88,7 +88,7 @@ export default function StepReview({ goToAddress, goToPayment }: Props) {
     dispatch(clearCart());
 
     // 🚀 redirecionar
-    router.push("/order-success");
+    router.push(`/order-success?orderId=${newOrder.id}`);
   }
 
   return (

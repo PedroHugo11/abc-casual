@@ -68,7 +68,7 @@ export default function OrdersPage() {
                         <div className="text-muted small">{order.date}</div>
                       </div>
 
-                      <span className="order-status success">
+                      <span className={`order-status ${order.status === "delivered" ? "success" : "warning"}`}>
                         {order.status}
                       </span>
                     </div>

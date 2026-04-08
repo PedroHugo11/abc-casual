@@ -48,6 +48,11 @@
   color:#00c864;
 }
 
+.order-status.warning{
+  background: #d6b10020;
+  color:#d6b100;
+}
+
 /* PRODUTO */
 
 .order-product{
