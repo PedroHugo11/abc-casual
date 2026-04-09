@@ -78,7 +78,7 @@ export default function OrderDetailsPage() {
               <MDBCard className="border">
                 <MDBCardBody>
                   <MDBRow className="align-items-center mb-3">
-                    <MDBCol md="8">
+                    <MDBCol size={6} md="8">
                       <h6 className="mb-2 fw-bold">Status do pedido</h6>
 
                       <MDBBadge
@@ -94,8 +94,8 @@ export default function OrderDetailsPage() {
                       </MDBBadge>
                     </MDBCol>
 
-                    <MDBCol md="4" className="text-end">
-                      <MDBBtn color="warning" className="fw-bold">
+                    <MDBCol size={6} md="4" className="text-end">
+                      <MDBBtn color="warning" className="fw-bold w-min">
                         Acompanhar entrega
                       </MDBBtn>
                     </MDBCol>
@@ -162,7 +162,7 @@ export default function OrderDetailsPage() {
 
                         {/* INFO */}
                         <MDBCol md="6">
-                          <h6 className="mb-1 fw-bold">{item.name}</h6>
+                          <h5 className="mt-3 mt-md-0 mb-1 fw-bold">{item.name}</h5>
 
                           <p className="text-muted mb-1 small">
                             {item.color} • {item.size}

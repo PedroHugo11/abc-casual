@@ -83,7 +83,7 @@ export default function StepPayment({ next, back }: Props) {
                   />
                 </MDBCol>
 
-                <MDBCol md="6">
+                <MDBCol md="6" className="mt-3 mt-md-0">
                   <MDBInput
                     label="Nome do titular"
                     value={card.name}
@@ -107,7 +107,7 @@ export default function StepPayment({ next, back }: Props) {
                   />
                 </MDBCol>
 
-                <MDBCol md="3">
+                <MDBCol md="3" className="mt-3 mt-md-0">
                   <MDBInput
                     label="Ano"
                     value={card.year}
@@ -117,7 +117,7 @@ export default function StepPayment({ next, back }: Props) {
                   />
                 </MDBCol>
 
-                <MDBCol md="3">
+                <MDBCol md="3" className="mt-3 mt-md-0">
                   <MDBInput
                     label="CVV"
                     value={card.cvv}
@@ -127,10 +127,10 @@ export default function StepPayment({ next, back }: Props) {
                   />
                 </MDBCol>
 
-                <MDBCol md="3" className="d-flex align-items-end">
+                <MDBCol md="3" className="mt-3 mt-md-0 d-flex align-items-end">
 
                   <MDBBtn
-                    color="primary"
+                    color="dark"
                     onClick={confirmCard}
                   >
                     Confirmar
