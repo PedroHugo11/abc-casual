@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { MDBBtn, MDBCol } from "mdb-react-ui-kit";
 import type { Product } from "@/features/products/productsTypes";
 import { useAppDispatch } from "@/store/hooks";
@@ -14,6 +15,8 @@ interface Props {
 
 export default function ProductOptions({ product, variants }: Props) {
   const dispatch = useAppDispatch();
+
+  const router = useRouter();
 
   const [selectedSize, setSelectedSize] = useState<string | undefined>(
     product.size?.[0],
@@ -112,7 +115,25 @@ export default function ProductOptions({ product, variants }: Props) {
           Adicionar ao Carrinho
         </MDBBtn>
 
-        <MDBBtn block outline color="dark" className="mt-2">
+        <MDBBtn
+          block
+          size="lg"
+          outline
+          color="dark"
+          className="mt-2"
+          onClick={() => {
+            dispatch(
+              addToCart({
+                product,
+                quantity: 1,
+                selectedSize: selectedSize!,
+                selectedColor: selectedColor!,
+              }),
+            );
+
+            router.push("/cart"); // 🔥 redireciona
+          }}
+        >
           Comprar agora
         </MDBBtn>
 
